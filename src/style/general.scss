@@ -1,2 +1,18 @@
 @import "bootstrap/scss/bootstrap";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
+@import "partials/card";
+
+:root {
+    --border-color: lightblue;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+.ms_border {
+    padding: 30px;
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+}

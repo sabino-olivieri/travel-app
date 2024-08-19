@@ -1,13 +1,19 @@
 import {createRouter, createWebHistory} from "vue-router";
 import HomePage from './pages/HomePage.vue';
+import NewTravelPage from "./pages/NewTravelPage.vue";
 
 export const router = createRouter({
-    history: createWebHistory(),  // serve per la cronologia
+    history: createWebHistory(),
     routes: [
         {
-            path: "/",     // path è quello che vediamo nella barra dei ricerca del browser
-            name: "home",    // etichetta definita per la rotta del codice
-            component: HomePage // bisogna importarla
+            path: "/",    
+            name: "home",    
+            component: HomePage 
+        },
+        {
+            path: "/new-travel",    
+            name: "newTravel",    
+            component: NewTravelPage
         },
 
     ]
