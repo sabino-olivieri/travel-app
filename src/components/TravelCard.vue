@@ -1,15 +1,16 @@
 <template>
-    <router-link :to="{name: 'newTravel'}">
+    <router-link :to="{name: 'travel', params: {title: title}}">
         <div class="ms_card text-center mb-2">
-            <h3>Aggiungi un nuovo Viaggio</h3>
-            <i class="fa-solid fa-plus"></i>
+            <h3>{{ title }}</h3>
         </div>
     </router-link>
 </template>
 
 <script>
     export default {
-        
+        props: {
+            title: String
+        }
     }
 </script>
 

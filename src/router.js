@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from "vue-router";
 import HomePage from './pages/HomePage.vue';
 import NewTravelPage from "./pages/NewTravelPage.vue";
+import TravelPage from "./pages/TravelPage.vue";
 
 export const router = createRouter({
     history: createWebHistory(),
@@ -14,6 +15,11 @@ export const router = createRouter({
             path: "/new-travel",    
             name: "newTravel",    
             component: NewTravelPage
+        },
+        {
+            path: "/travel/:title",    
+            name: "travel",    
+            component: TravelPage
         },
 
     ]
