@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from "vue-router";
 import HomePage from './pages/HomePage.vue';
 import NewTravelPage from "./pages/NewTravelPage.vue";
 import TravelPage from "./pages/TravelPage.vue";
+import DayPage from "./pages/DayPage.vue";
 
 export const router = createRouter({
     history: createWebHistory(),
@@ -17,9 +18,14 @@ export const router = createRouter({
             component: NewTravelPage
         },
         {
-            path: "/travel/:title",    
+            path: "/travel",    
             name: "travel",    
             component: TravelPage
+        },
+        {
+            path: "/travel/day",    
+            name: "travelDay",    
+            component: DayPage,
         },
 
     ]

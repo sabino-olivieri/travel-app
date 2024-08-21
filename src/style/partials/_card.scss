@@ -1,9 +1,16 @@
 .ms_card {
     padding: 30px;
-    border: 2px solid var(--border-color);
+    background-color: white;
     border-radius: 20px;
 
     .fa-plus {
         font-size: 30px;
     }
+}
+
+.sub-card {
+    border-radius: 20px;
+    padding: 30px;
+    background-color: #264653;
+    color: white;
 }

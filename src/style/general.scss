@@ -6,6 +6,11 @@
     --border-color: lightblue;
 }
 
+body {
+    background-color: #F4A261;
+    
+}
+
 a {
     text-decoration: none;
     color: unset;
@@ -13,6 +18,5 @@ a {
 
 .ms_border {
     padding: 30px;
-    border: 2px solid var(--border-color);
     border-radius: 20px;
 }

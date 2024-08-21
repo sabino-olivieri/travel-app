@@ -4,8 +4,15 @@
             <div class="row">
                 <NoTravel />
 
-                <div v-if="store.arrayTravel.length > 0">
-                    <TravelCard v-for="travel in store.arrayTravel" :title="travel.title" :key="travel" />
+            </div>
+        </div>
+
+        <div v-if="store.arrayTravel.length > 0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-4 col-lg-3" v-for="travel in store.arrayTravel" :key="travel">
+                        <TravelCard  :title="travel.title"  />
+                    </div>
                 </div>
             </div>
         </div>
