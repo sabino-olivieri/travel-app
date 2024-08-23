@@ -1,6 +1,9 @@
 @import "bootstrap/scss/bootstrap";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 @import "partials/card";
+@import "partials/sidebarnewstage";
+@import "partials/rating";
+@import "partials/preview-image";
 
 :root {
     --border-color: lightblue;

@@ -1,0 +1,22 @@
+.rating {
+    direction: rtl;
+    display: inline;
+}
+
+.rating>input {
+display: none;
+}
+
+.rating>label {
+cursor: pointer;
+color: #ddd;
+}
+
+.rating>label:hover,
+.rating>label:hover~label {
+color: gold;
+}
+
+.rating>input:checked~label {
+color: gold;
+}

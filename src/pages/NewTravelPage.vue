@@ -12,19 +12,19 @@
                         <div class="mb-3">
                             <label for="title" class="form-label">Titolo Viaggio</label>
                             <input type="text" class="form-control" id="title" placeholder="Titolo Viaggio"
-                                v-model.trim="title" required>
+                                v-model.trim="title" >
                         </div>
 
                         <div class="mb-3">
                             <label for="start-date" class="form-label">Data inizio</label>
                             <input type="date" class="form-control" id="start-date" placeholder="Data inizio viaggio"
-                                v-model="startDate" required>
+                                v-model="startDate" >
                         </div>
 
                         <div class="mb-3">
                             <label for="finish-date" class="form-label">Data fine</label>
                             <input type="date" class="form-control" id="finish-date" placeholder="Data fine viaggio"
-                                v-model="finishDate" required>
+                                v-model="finishDate" >
                         </div>
 
                         <button class="btn btn-outline-light" @click="saveData()">Salva</button>
@@ -177,7 +177,7 @@ export default {
 
                 const travelJSON = JSON.stringify(store.arrayTravel);
                 localStorage.setItem('travel', travelJSON);
-                this.$router.push({name: 'travel', params: { title: titleUpper }});
+                this.$router.push({name: 'travel', query: { title: titleUpper }});
 
             }
 

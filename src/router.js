@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage.vue';
 import NewTravelPage from "./pages/NewTravelPage.vue";
 import TravelPage from "./pages/TravelPage.vue";
 import DayPage from "./pages/DayPage.vue";
+import StagePage from "./pages/StagePage.vue";
 
 export const router = createRouter({
     history: createWebHistory(),
@@ -26,6 +27,11 @@ export const router = createRouter({
             path: "/travel/day",    
             name: "travelDay",    
             component: DayPage,
+        },
+        {
+            path: "/travel/day/stage",    
+            name: "stagePage",    
+            component: StagePage,
         },
 
     ]
