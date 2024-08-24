@@ -115,19 +115,19 @@ export default {
 
 
                 store.arrayTravel[this.indexTravel].days.forEach(day => {
-                    console.log('giorno',day);
-                    
-                    if(day.stages) {
+                    console.log('giorno', day);
+
+                    if (day.stages) {
 
                         day.stages.forEach(stage => {
-                            
+
                             if (stage.title === stageUpper) {
                                 exsist = true;
-                                
+
                             }
                         });
                     }
-                    
+
                 });
 
             } else {
@@ -258,21 +258,24 @@ export default {
 
         openOrCreateDatabase() {
             return new Promise((resolve, reject) => {
-                const request = indexedDB.open('ImageDB', 1);
+                const request = indexedDB.open('myDatabase', 1);
 
                 request.onupgradeneeded = (event) => {
                     const db = event.target.result;
-                    db.createObjectStore('images', { autoIncrement: true, keyPath: 'id' });
+
+                    if (!db.objectStoreNames.contains('images')) {
+                        const objectStore = db.createObjectStore('images', { keyPath: 'id', autoIncrement: true });
+                        objectStore.createIndex('travelID', 'travelID', { unique: false });
+                    }
                 };
 
                 request.onsuccess = (event) => {
                     this.db = event.target.result;
-                    resolve(this.db);
+                    resolve();
                 };
 
                 request.onerror = (event) => {
-                    console.error('Errore nell\'apertura del database:', event.target.error);
-                    reject(event.target.error);
+                    reject('Errore nell\'apertura o creazione del database:', event.target.error);
                 };
             });
         },
@@ -288,7 +291,10 @@ export default {
 
                 const transaction = this.db.transaction(['images'], 'readwrite');
                 const objectStore = transaction.objectStore('images');
-                const image = { img: img };
+                const image = {
+                    img: img,
+                    travelID: this.indexTravel
+                };
                 const request = objectStore.add(image);
 
                 request.onsuccess = (event) => {
@@ -338,7 +344,7 @@ export default {
         },
 
         resetInputFile() {
-            
+
             const inputElem = document.getElementById('photos');
 
             inputElem.value = '';
