@@ -2,11 +2,16 @@
 
 // definisco il nome della cache
 // per poterla richiamare in seguito
-const cacheName = '_hello-pwa_';
+const cacheName = 'travel-app3';
 
 const resourcesToCache = [
     '/',
     '/style/general.scss',
+    'index.html',
+    '/index.html',
+    'manifest.json',
+    'main.js',
+    '/main.js',
     'diary.png'
 ];
 
@@ -18,6 +23,7 @@ self.addEventListener('install', function (e) {
     e.waitUntil(
         caches.open(cacheName)
             .then(function (cache) {
+                
                 return cache.addAll(resourcesToCache);
             })
     )
