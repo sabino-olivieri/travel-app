@@ -3,17 +3,19 @@
         <div class="container py-4">
             <div class="row">
                 <div class="ms_card">
-                    <div class="d-flex flex-wrap justify-content-between">
+                    <div class="d-flex flex-wrap justify-content-between mb-2">
                         <div>
 
                             <h3>{{ travel.title }}</h3>
                             <h6 class="mb-3">dal {{ getFormattedDate(travel.startDate) }} al {{
                                 getFormattedDate(travel.finishDate) }}</h6>
                         </div>
-                        <div>
+                        <div class="d-flex gap-2 align-items-start">
 
+                            <button class="btn btn-warning" @click="store.overlayHidden = false"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                            
                             <button class="btn btn-danger" @click="store.overlayHidden = false"> <i
-                                    class="fa-solid fa-trash"></i> </button>
+                                    class="fa-solid fa-trash text-white"></i> </button>
                         </div>
 
                     </div>
