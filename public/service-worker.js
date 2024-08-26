@@ -7,10 +7,8 @@ const cacheName = 'travel-app3';
 const resourcesToCache = [
     '/',
     '/style/general.scss',
-    'index.html',
     '/index.html',
     'manifest.json',
-    'main.js',
     '/main.js',
     'diary.png'
 ];

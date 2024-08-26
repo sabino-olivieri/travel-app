@@ -19,7 +19,58 @@ export default {
     store.arrayTravel = arrayJSON ? arrayJSON : [];
 
     console.log(store.arrayTravel);
+    this.getAllImages();
+
   },
+
+  methods: {
+    openOrCreateDatabase() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open('ImageDB', 1);
+
+                request.onupgradeneeded = (event) => {
+                    const db = event.target.result;
+
+                    if (!db.objectStoreNames.contains('images')) {
+                        const objectStore = db.createObjectStore('images', { keyPath: 'id', autoIncrement: true });
+                        objectStore.createIndex('travelID', 'travelID', { unique: false });
+                    }
+                };
+
+                request.onsuccess = (event) => {
+                    this.db = event.target.result;
+                    resolve();
+                };
+
+                request.onerror = (event) => {
+                    reject('Errore nell\'apertura o creazione del database:', event.target.error);
+                };
+            });
+        },
+
+getAllImages() {
+    this.openOrCreateDatabase().then(db => {
+        const transaction = this.db.transaction(['images'], 'readonly');
+        const objectStore = transaction.objectStore('images');
+        const request = objectStore.getAll(); // Ottieni tutti i record
+
+        request.onsuccess = (event) => {
+            const images = event.target.result;
+            console.log('Contenuto del database:', images);
+
+            images.forEach(image => {
+                console.log(`ID: ${image.id}, TravelID: ${image.travelID}`);
+            });
+        };
+
+        request.onerror = (event) => {
+            console.error('Errore nel recupero delle immagini:', event.target.error);
+        };
+    }).catch(error => {
+        console.error(error);
+    });
+}
+  }
 }
 </script>
 

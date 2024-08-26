@@ -64,9 +64,10 @@ export default {
         store.arrayTravel[this.indexTravel].days[this.indexDay].stages.forEach(stage => {
             if (stage.title == this.title) {
                 this.travelStage = stage;
-                console.log(this.travelStage);
+                console.log('Stage',this.travelStage);
                 
                 this.photos = stage.gallery;
+                console.log('Photos',this.photos);
             }
         });
 
@@ -111,14 +112,22 @@ export default {
                 this.gallery = [],
 
                     idArray.forEach(id => {
+                        
+                        
+                        
                         const request = objectStore.get(id);
+                        console.log(objectStore.getAll());
+                        
 
                         request.onsuccess = (event) => {
                             const result = event.target.result;
+                            console.log(result);
                             if (result) {
 
-
+                                
                                 this.gallery.push(result.img);
+                                console.log('Gallery',this.gallery);
+                                
                             }
                             if (this.gallery.length === idArray.length) {
                                 resolve(this.gallery);

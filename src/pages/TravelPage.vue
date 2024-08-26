@@ -93,7 +93,7 @@ export default {
 
         openOrCreateDatabase() {
             return new Promise((resolve, reject) => {
-                const request = indexedDB.open('myDatabase', 1);
+                const request = indexedDB.open('ImageDB', 1);
 
                 request.onupgradeneeded = (event) => {
                     const db = event.target.result;

@@ -6,38 +6,14 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
-      registerType: 'autoUpdate',
+      src: 'src/service-worker.js', // Percorso al tuo service worker personalizzato
+      registerType: 'autoUpdate', // Assicura che gli aggiornamenti siano automatici e non immediati
       workbox: {
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/your-api-url\.com\/.*$/,
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'api-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 giorni
-              },
-            },
-          },
-          {
-            urlPattern: ({ request }) => request.destination === 'document',
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'html-cache',
-            },
-          },
-          {
-            urlPattern: ({ request }) => request.destination === 'script' || request.destination === 'style',
-            handler: 'StaleWhileRevalidate',
-            options: {
-              cacheName: 'static-resources',
-            },
-          },
-        ],
+        clientsClaim: true, // Prende il controllo immediatamente
+        skipWaiting: true, // Salta il processo di attesa
       },
       devOptions: {
-        enabled: true, // Assicura che il service worker sia attivato in modalità di sviluppo
+        enabled: true, // Questo dovrebbe essere disattivato in produzione
       },
     }),
   ],

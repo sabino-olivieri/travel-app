@@ -168,7 +168,7 @@ export default {
                 this.newStage.rating = starElem ? parseInt(starElem.value) : 0;
                 starElem ? starElem.checked = false : '';
                 this.processImagesAndStage();
-
+                
                 console.log(store.arrayTravel);
 
                 const travelJSON = JSON.stringify(store.arrayTravel);
@@ -258,7 +258,7 @@ export default {
 
         openOrCreateDatabase() {
             return new Promise((resolve, reject) => {
-                const request = indexedDB.open('myDatabase', 1);
+                const request = indexedDB.open('ImageDB', 1);
 
                 request.onupgradeneeded = (event) => {
                     const db = event.target.result;
