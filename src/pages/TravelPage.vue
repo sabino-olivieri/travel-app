@@ -12,8 +12,10 @@
                         </div>
                         <div class="d-flex gap-2 align-items-start">
 
-                            <button class="btn btn-warning" @click="store.overlayHidden = false"> <i class="fa-solid fa-pen-to-square"></i> </button>
-                            
+                            <router-link :to="{ name: 'editTravel', params: { id: indexTravel } }">
+                                <button class="btn btn-warning"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                            </router-link>
+
                             <button class="btn btn-danger" @click="store.overlayHidden = false"> <i
                                     class="fa-solid fa-trash text-white"></i> </button>
                         </div>

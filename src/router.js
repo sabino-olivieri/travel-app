@@ -4,6 +4,7 @@ import NewTravelPage from "./pages/NewTravelPage.vue";
 import TravelPage from "./pages/TravelPage.vue";
 import DayPage from "./pages/DayPage.vue";
 import StagePage from "./pages/StagePage.vue";
+import EditTravelPage from "./pages/EditTravelPage.vue";
 
 export const router = createRouter({
     history: createWebHistory(),
@@ -33,6 +34,11 @@ export const router = createRouter({
             name: "stagePage",    
             component: StagePage,
         },
+        {
+            path: "/edit/:id",    
+            name: "editTravel",    
+            component: EditTravelPage
+        }
 
     ]
 });
