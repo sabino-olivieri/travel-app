@@ -51,7 +51,7 @@
 
                         <div class="mb-3">
                             <label for="photos" class="form-label">Allega foto</label>
-                            <input class="form-control" type="file" id="photos" multiple accept="image/*"
+                            <input class="form-control" type="file" id="photos" multiple accept="image/jpeg, image/png, image/gif"
                                 @change="galleryAnteprima($event)">
                         </div>
 
