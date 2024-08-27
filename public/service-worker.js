@@ -9,6 +9,8 @@ const resourcesToCache = [
     '/style/general.scss',
     '/index.html',
     'manifest.json',
+    '@fortawesome/fontawesome-free/css/all.min.css',
+    'bootstrap/scss/bootstrap',
     '/main.js',
     'diary.png'
 ];
