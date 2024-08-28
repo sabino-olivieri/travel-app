@@ -13,11 +13,19 @@
                         <div class="d-flex gap-2 align-items-start">
 
                             <router-link :to="{ name: 'editTravel', params: { id: indexTravel } }">
-                                <button class="btn btn-warning"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                                <button class="btn btn-warning d-flex align-items-center"> <svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1025 1023">
+                                        <path fill="currentColor"
+                                            d="M896.428 1023h-768q-53 0-90.5-37.5T.428 895V127q0-53 37.5-90t90.5-37h576l-128 127h-384q-27 0-45.5 19t-18.5 45v640q0 27 19 45.5t45 18.5h640q27 0 45.5-18.5t18.5-45.5V447l128-128v576q0 53-37.5 90.5t-90.5 37.5zm-576-464l144 144l-208 64zm208 96l-160-159l479-480q17-16 40.5-16t40.5 16l79 80q16 16 16.5 39.5t-16.5 40.5z" />
+                                    </svg> </button>
                             </router-link>
 
-                            <button class="btn btn-danger" @click="store.overlayHidden = false"> <i
-                                    class="fa-solid fa-trash text-white"></i> </button>
+                            <button class="btn btn-danger d-flex align-items-center"
+                                @click="store.overlayHidden = false"> <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 448 512">
+                                    <path fill="currentColor"
+                                        d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64s14.3 32 32 32h384c17.7 0 32-14.3 32-32s-14.3-32-32-32h-96l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32l21.2 339c1.6 25.3 22.6 45 47.9 45h245.8c25.3 0 46.3-19.7 47.9-45L416 128z" />
+                                </svg> </button>
                         </div>
 
                     </div>

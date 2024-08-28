@@ -19,7 +19,23 @@ a {
     color: unset;
 }
 
+button {
+    svg {
+    width: 20px;
+    height: 20px;
+    }
+}
+
+.btn {
+    padding: 10px;
+}
+
 .ms_border {
     padding: 30px;
     border-radius: 20px;
 }
+
+.form-control {
+    border: 0;
+
+border-radius: 10px;}

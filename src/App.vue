@@ -58,9 +58,6 @@ getAllImages() {
             const images = event.target.result;
             console.log('Contenuto del database:', images);
 
-            images.forEach(image => {
-                console.log(`ID: ${image.id}, TravelID: ${image.travelID}`);
-            });
         };
 
         request.onerror = (event) => {

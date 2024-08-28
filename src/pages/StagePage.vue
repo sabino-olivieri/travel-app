@@ -116,17 +116,17 @@ export default {
                         
                         
                         const request = objectStore.get(id);
-                        console.log(objectStore.getAll());
+                        
                         
 
                         request.onsuccess = (event) => {
                             const result = event.target.result;
-                            console.log(result);
+                            
                             if (result) {
 
                                 
                                 this.gallery.push(result.img);
-                                console.log('Gallery',this.gallery);
+                                
                                 
                             }
                             if (this.gallery.length === idArray.length) {
@@ -147,7 +147,7 @@ export default {
 
 
                 this.images = await this.getImagesById(this.photos);
-                console.log('Immagini recuperate:', this.images);
+                
             } catch (error) {
                 console.error('Errore durante il recupero delle immagini:', error);
             }

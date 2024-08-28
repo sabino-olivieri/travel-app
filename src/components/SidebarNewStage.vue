@@ -8,8 +8,14 @@
                         <h3 class="mb-5">Aggiungi una nuova tappa:</h3>
 
                         <div>
-                            <button class="btn btn-danger" @click="store.sidebarHidden = !store.sidebarHidden"><i
-                                    class="fa-solid fa-xmark"></i></button>
+                            <button class="btn btn-danger d-flex align-items-center"
+                                @click="store.sidebarHidden = !store.sidebarHidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path fill="currentColor" fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 0 1 1.414 0L10 8.586l4.293-4.293a1 1 0 1 1 1.414 1.414L11.414 10l4.293 4.293a1 1 0 0 1-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 0 1-1.414-1.414L8.586 10L4.293 5.707a1 1 0 0 1 0-1.414Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </button>
                         </div>
 
                     </div>
@@ -51,8 +57,8 @@
 
                         <div class="mb-3">
                             <label for="photos" class="form-label">Allega foto</label>
-                            <input class="form-control" type="file" id="photos" multiple accept="image/jpeg, image/png, image/gif"
-                                @change="galleryAnteprima($event)">
+                            <input class="form-control" type="file" id="photos" multiple
+                                accept="image/jpeg, image/png, image/gif" @change="galleryAnteprima($event)">
                         </div>
 
                         <div id="gallery-preview" class="mb-3">
@@ -168,7 +174,7 @@ export default {
                 this.newStage.rating = starElem ? parseInt(starElem.value) : 0;
                 starElem ? starElem.checked = false : '';
                 this.processImagesAndStage();
-                
+
                 console.log(store.arrayTravel);
 
                 const travelJSON = JSON.stringify(store.arrayTravel);
