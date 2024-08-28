@@ -1,5 +1,5 @@
 <template>
-    <div class="p-1 animation" :class="animation ? 'hidden' : ''">
+    <div class="p-1 animation" :class="store.animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <main class="ms_border p-3">
@@ -63,11 +63,11 @@ export default {
             gallery: [],
             travelStage: {},
             store,
-            animation: true,
+            
         }
     },
     beforeRouteLeave(to, from, next) {
-        this.animation = true;
+        store.animation = true;
         setTimeout(() => {
             next();
         }, 500)
@@ -78,7 +78,7 @@ export default {
         this.title = this.$route.query.title;
         this.indexTravel = this.$route.query.travel;
         this.indexDay = this.$route.query.day;
-
+        
 
 
         store.arrayTravel[this.indexTravel].days[this.indexDay].stages.forEach(stage => {
@@ -90,13 +90,13 @@ export default {
                 console.log('Photos', this.photos);
             }
         });
-
+        this.loadImages();
 
     },
     mounted() {
-        this.loadImages();
+        store.animation = true;      
         setTimeout(() => {
-            this.animation = false;
+            store.animation = false;
         }, 1)
     },
 

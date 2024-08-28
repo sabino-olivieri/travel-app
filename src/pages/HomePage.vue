@@ -1,5 +1,5 @@
 <template>
-    <main class="p-1 animation" :class="animation ? 'hidden' : ''">
+    <main class="p-1 animation" :class="store.animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <NoTravel />
@@ -30,17 +30,19 @@ export default {
     data() {
         return {
             store,
-            animation: true
+            
         }
     },
     mounted() {
+        
+        store.animation = true;
         setTimeout(() => {
 
-            this.animation = false;
+            store.animation = false;
         }, 1)
     },
     beforeRouteLeave(to, from, next) {
-        this.animation = true;
+        store.animation = true;
         setTimeout(() => {
             next();
         },500)

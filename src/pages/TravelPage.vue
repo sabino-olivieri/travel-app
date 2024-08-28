@@ -1,5 +1,5 @@
 <template>
-    <div class="p-1 animation" :class="animation ? 'hidden' : ''">
+    <div class="p-1 animation" :class="store.animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <div class="ms_card">
@@ -58,14 +58,13 @@ export default {
             store,
             travel: [],
             indexTravel: 0,
-            animation: true
         }
     },
     beforeRouteLeave(to, from, next) {
-        this.animation = true;
+        store.animation = true;
         setTimeout(() => {
             next();
-            this.animation = false;
+            store.animation = false;
         },500)
         
     },
@@ -81,9 +80,10 @@ export default {
     },
 
     mounted() {
+        store.animation = true;
         setTimeout(() => {
 
-            this.animation = false;
+            store.animation = false;
         }, 1)
     },
 

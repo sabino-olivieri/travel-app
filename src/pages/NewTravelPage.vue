@@ -1,5 +1,5 @@
 <template>
-    <div class="p-1 animation" :class="animation ? 'hidden' : ''">
+    <div class="p-1 animation" :class="store.animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <main class="ms_border p-3">
@@ -46,11 +46,11 @@ export default {
             startDate: '',
             finishDate: '',
             store,
-            animation: true
+            
         }
     },
     beforeRouteLeave(to, from, next) {
-        this.animation = true;
+        store.animation = true;
         setTimeout(() => {
             next();
         },500)
@@ -192,9 +192,10 @@ export default {
         }
     },
     mounted() {
+        store.animation = true;
         setTimeout(() => {
 
-            this.animation = false;
+            store.animation = false;
         },1)
     }
 }

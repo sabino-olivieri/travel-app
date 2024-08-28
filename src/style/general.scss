@@ -46,6 +46,8 @@ button {
 
 .animation {
     position: fixed;
+    max-height: 100vh;
+    overflow: auto;
     width: 100%;
-    transition: all 0.5s;
+    transition: all 0.5s ease;
 }
