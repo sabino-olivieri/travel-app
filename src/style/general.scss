@@ -51,3 +51,12 @@ button {
     width: 100%;
     transition: all 0.5s ease;
 }
+
+.ms_border {
+    max-height: calc(100vh - 1.5rem * 2);
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none; /* Nasconde la barra di scorrimento */
+    }
+}

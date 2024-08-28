@@ -1,5 +1,5 @@
 <template>
-    <main class="p-1 animation" :class="store.animation ? 'hidden' : ''">
+    <main class="px-1 animation" :class="store.animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <NoTravel />
