@@ -33,19 +33,39 @@
                             <label class="form-label d-block">Valutazione</label>
                             <div class="rating">
                                 <input type="radio" id="star5" name="rating" value="5">
-                                <label for="star5" title="5 stelle"><i class="fa-solid fa-star"></i></label>
+                                <label for="star5" title="5 stelle"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" viewBox="0 0 26 26">
+                                        <path fill="currentColor"
+                                            d="M25.326 10.137a1.001 1.001 0 0 0-.807-.68l-7.34-1.066l-3.283-6.651c-.337-.683-1.456-.683-1.793 0L8.82 8.391L1.48 9.457a1 1 0 0 0-.554 1.705l5.312 5.178l-1.254 7.31a1.001 1.001 0 0 0 1.451 1.054L13 21.252l6.564 3.451a1 1 0 0 0 1.451-1.054l-1.254-7.31l5.312-5.178a.998.998 0 0 0 .253-1.024z" />
+                                    </svg></label>
 
                                 <input type="radio" id="star4" name="rating" value="4">
-                                <label for="star4" title="4 stelle"><i class="fa-solid fa-star"></i></label>
+                                <label for="star4" title="4 stelle"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" viewBox="0 0 26 26">
+                                        <path fill="currentColor"
+                                            d="M25.326 10.137a1.001 1.001 0 0 0-.807-.68l-7.34-1.066l-3.283-6.651c-.337-.683-1.456-.683-1.793 0L8.82 8.391L1.48 9.457a1 1 0 0 0-.554 1.705l5.312 5.178l-1.254 7.31a1.001 1.001 0 0 0 1.451 1.054L13 21.252l6.564 3.451a1 1 0 0 0 1.451-1.054l-1.254-7.31l5.312-5.178a.998.998 0 0 0 .253-1.024z" />
+                                    </svg></label>
 
                                 <input type="radio" id="star3" name="rating" value="3">
-                                <label for="star3" title="3 stelle"><i class="fa-solid fa-star"></i></label>
+                                <label for="star3" title="3 stelle"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" viewBox="0 0 26 26">
+                                        <path fill="currentColor"
+                                            d="M25.326 10.137a1.001 1.001 0 0 0-.807-.68l-7.34-1.066l-3.283-6.651c-.337-.683-1.456-.683-1.793 0L8.82 8.391L1.48 9.457a1 1 0 0 0-.554 1.705l5.312 5.178l-1.254 7.31a1.001 1.001 0 0 0 1.451 1.054L13 21.252l6.564 3.451a1 1 0 0 0 1.451-1.054l-1.254-7.31l5.312-5.178a.998.998 0 0 0 .253-1.024z" />
+                                    </svg></label>
 
                                 <input type="radio" id="star2" name="rating" value="2">
-                                <label for="star2" title="2 stelle"><i class="fa-solid fa-star"></i></label>
+                                <label for="star2" title="2 stelle"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" viewBox="0 0 26 26">
+                                        <path fill="currentColor"
+                                            d="M25.326 10.137a1.001 1.001 0 0 0-.807-.68l-7.34-1.066l-3.283-6.651c-.337-.683-1.456-.683-1.793 0L8.82 8.391L1.48 9.457a1 1 0 0 0-.554 1.705l5.312 5.178l-1.254 7.31a1.001 1.001 0 0 0 1.451 1.054L13 21.252l6.564 3.451a1 1 0 0 0 1.451-1.054l-1.254-7.31l5.312-5.178a.998.998 0 0 0 .253-1.024z" />
+                                    </svg></label>
 
                                 <input type="radio" id="star1" name="rating" value="1">
-                                <label for="star1" title="1 stella"><i class="fa-solid fa-star"></i></label>
+                                <label for="star1" title="1 stella"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" viewBox="0 0 26 26">
+                                        <path fill="currentColor"
+                                            d="M25.326 10.137a1.001 1.001 0 0 0-.807-.68l-7.34-1.066l-3.283-6.651c-.337-.683-1.456-.683-1.793 0L8.82 8.391L1.48 9.457a1 1 0 0 0-.554 1.705l5.312 5.178l-1.254 7.31a1.001 1.001 0 0 0 1.451 1.054L13 21.252l6.564 3.451a1 1 0 0 0 1.451-1.054l-1.254-7.31l5.312-5.178a.998.998 0 0 0 .253-1.024z" />
+                                    </svg></label>
                             </div>
                         </div>
 

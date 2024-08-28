@@ -1,5 +1,5 @@
 <template>
-    <div class="p-1">
+    <div class="p-1 animation" :class="animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <div class="ms_card">
@@ -58,8 +58,18 @@ export default {
             store,
             travel: [],
             indexTravel: 0,
+            animation: true
         }
     },
+    beforeRouteLeave(to, from, next) {
+        this.animation = true;
+        setTimeout(() => {
+            next();
+            this.animation = false;
+        },500)
+        
+    },
+
     created() {
         const title = this.$route.query.title;
         store.arrayTravel.forEach((element, index) => {
@@ -68,6 +78,13 @@ export default {
                 this.indexTravel = index
             }
         });
+    },
+
+    mounted() {
+        setTimeout(() => {
+
+            this.animation = false;
+        }, 1)
     },
 
     methods: {
@@ -163,4 +180,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

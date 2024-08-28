@@ -1,5 +1,5 @@
 <template>
-    <div class="p-2">
+    <div class="p-1 animation" :class="animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <main class="ms_border p-3">
@@ -46,7 +46,15 @@ export default {
             startDate: '',
             finishDate: '',
             store,
+            animation: true
         }
+    },
+    beforeRouteLeave(to, from, next) {
+        this.animation = true;
+        setTimeout(() => {
+            next();
+        },500)
+        
     },
     methods: {
         isExsist() {
@@ -182,6 +190,12 @@ export default {
             }
 
         }
+    },
+    mounted() {
+        setTimeout(() => {
+
+            this.animation = false;
+        },1)
     }
 }
 </script>
@@ -190,4 +204,5 @@ export default {
 .ms_border {
     background-color: white;
 }
+
 </style>

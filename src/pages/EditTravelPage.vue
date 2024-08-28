@@ -1,10 +1,10 @@
 <template>
-    <div class="p-2">
+    <div class="p-1 animation" :class="animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <main class="ms_border p-3">
 
-                    <h3 class="mb-5">Modifica un nuovo viaggio:</h3>
+                    <h3 class="mb-5">Modifica viaggio:</h3>
 
 
                     <div class="sub-card p-3">
@@ -12,19 +12,19 @@
                         <div class="mb-3">
                             <label for="title" class="form-label">Titolo Viaggio</label>
                             <input type="text" class="form-control" id="title" placeholder="Titolo Viaggio"
-                                v-model.trim="title" >
+                                v-model.trim="title">
                         </div>
 
                         <div class="mb-3">
                             <label for="start-date" class="form-label">Data inizio</label>
                             <input type="date" class="form-control" id="start-date" placeholder="Data inizio viaggio"
-                                v-model="startDate" >
+                                v-model="startDate">
                         </div>
 
                         <div class="mb-3">
                             <label for="finish-date" class="form-label">Data fine</label>
                             <input type="date" class="form-control" id="finish-date" placeholder="Data fine viaggio"
-                                v-model="finishDate" >
+                                v-model="finishDate">
                         </div>
 
                         <button class="btn btn-outline-light" @click="saveData()">Salva</button>
@@ -48,13 +48,26 @@ export default {
             finishDate: '',
             store,
             indexTravel: null,
+            animation: false
         }
+    },
+    beforeRouteLeave(to, from, next) {
+        this.animation = true;
+        setTimeout(() => {
+            next();
+        }, 500)
+
     },
     created() {
         this.indexTravel = this.$route.params.id;
         this.title = store.arrayTravel[this.indexTravel].title;
         this.startDate = store.arrayTravel[this.indexTravel].startDate;
         this.finishDate = store.arrayTravel[this.indexTravel].finishDate;
+    },
+    mounted() {
+        setTimeout(() => {
+            this.animation = false;
+        }, 1)
     },
     methods: {
         isExsist() {
@@ -63,7 +76,7 @@ export default {
             const inputTitle = document.getElementById('title');
             const inputLabel = document.querySelector('[for="title"]');
 
-            if(titleUpper.length > 2) {
+            if (titleUpper.length > 2) {
 
                 store.arrayTravel.forEach((travel, index) => {
                     if (travel.title === titleUpper && index != this.indexTravel) {
@@ -149,8 +162,8 @@ export default {
                 }
             }
 
-            if(!error) {
-                numDays =( finish.getTime() - start.getTime() ) / (1000 * 60 * 60 * 24) + 1; 
+            if (!error) {
+                numDays = (finish.getTime() - start.getTime()) / (1000 * 60 * 60 * 24) + 1;
             }
 
             return {
@@ -163,29 +176,29 @@ export default {
 
             const exsist = this.isExsist();
             const errorDate = this.dateCheck();
-            
-            
+
+
 
             if (!exsist && !errorDate.error) {
                 const days = [];
                 for (let index = 1; index <= errorDate.numDays; index++) {
                     days.push({
-                        day: "Giorno "+ index,
+                        day: "Giorno " + index,
                     })
-                    
+
                 }
 
                 store.arrayTravel[this.indexTravel].days.forEach((day, index) => {
-                    if(day.stages) {
-                        if(index < days.length) {
+                    if (day.stages) {
+                        if (index < days.length) {
                             days[index].stages = day.stages;
                         } else {
-                            if(!days[days.length - 1].stages) {
+                            if (!days[days.length - 1].stages) {
                                 days[days.length - 1].stages = [];
                             }
                             days[days.length - 1].stages = [...days[days.length - 1].stages, ...day.stages];
                         }
-                        
+
                     }
                 });
 
@@ -197,12 +210,12 @@ export default {
                     finishDate: this.finishDate,
                     days: days
                 }
-                
+
                 console.log(store.arrayTravel);
 
                 const travelJSON = JSON.stringify(store.arrayTravel);
                 localStorage.setItem('travel', travelJSON);
-                this.$router.push({name: 'travel', query: { title: titleUpper }});
+                this.$router.push({ name: 'travel', query: { title: titleUpper } });
 
             }
 

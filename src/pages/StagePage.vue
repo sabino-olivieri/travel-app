@@ -1,14 +1,25 @@
 <template>
-    <div class="p-2">
+    <div class="p-1 animation" :class="animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <main class="ms_border p-3">
 
                     <h3 class="">{{ title }}</h3>
                     <div class="mb-5">
+                        <svg class="gold" v-for="n in travelStage.rating" :key="n" xmlns="http://www.w3.org/2000/svg"
+                            width="20" height="20" viewBox="0 0 26 26">
+                            <path fill="currentColor"
+                                d="M25.326 10.137a1.001 1.001 0 0 0-.807-.68l-7.34-1.066l-3.283-6.651c-.337-.683-1.456-.683-1.793 0L8.82 8.391L1.48 9.457a1 1 0 0 0-.554 1.705l5.312 5.178l-1.254 7.31a1.001 1.001 0 0 0 1.451 1.054L13 21.252l6.564 3.451a1 1 0 0 0 1.451-1.054l-1.254-7.31l5.312-5.178a.998.998 0 0 0 .253-1.024z" />
+                        </svg>
 
-                        <i class="fa-solid fa-star gold" v-for="n in travelStage.rating" :key="n"></i>
-                        <i class="fa-regular fa-star gold" v-for="n in 5 - travelStage.rating" :key="n"></i>
+
+
+                        <svg class="grey" v-for="n in 5 - travelStage.rating" :key="n"
+                            xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 26 26">
+                            <path fill="currentColor"
+                                d="M25.326 10.137a1.001 1.001 0 0 0-.807-.68l-7.34-1.066l-3.283-6.651c-.337-.683-1.456-.683-1.793 0L8.82 8.391L1.48 9.457a1 1 0 0 0-.554 1.705l5.312 5.178l-1.254 7.31a1.001 1.001 0 0 0 1.451 1.054L13 21.252l6.564 3.451a1 1 0 0 0 1.451-1.054l-1.254-7.31l5.312-5.178a.998.998 0 0 0 .253-1.024z" />
+                        </svg>
+
                     </div>
 
                     <div class="sub-card p-3">
@@ -22,7 +33,7 @@
 
                             <ImageCarousel :photos="gallery" />
                         </div>
-                        
+
 
                     </div>
                 </main>
@@ -52,8 +63,17 @@ export default {
             gallery: [],
             travelStage: {},
             store,
+            animation: true,
         }
     },
+    beforeRouteLeave(to, from, next) {
+        this.animation = true;
+        setTimeout(() => {
+            next();
+        }, 500)
+
+    },
+
     created() {
         this.title = this.$route.query.title;
         this.indexTravel = this.$route.query.travel;
@@ -64,10 +84,10 @@ export default {
         store.arrayTravel[this.indexTravel].days[this.indexDay].stages.forEach(stage => {
             if (stage.title == this.title) {
                 this.travelStage = stage;
-                console.log('Stage',this.travelStage);
-                
+                console.log('Stage', this.travelStage);
+
                 this.photos = stage.gallery;
-                console.log('Photos',this.photos);
+                console.log('Photos', this.photos);
             }
         });
 
@@ -75,7 +95,11 @@ export default {
     },
     mounted() {
         this.loadImages();
+        setTimeout(() => {
+            this.animation = false;
+        }, 1)
     },
+
     methods: {
         openOrCreateDatabase() {
             return new Promise((resolve, reject) => {
@@ -112,22 +136,22 @@ export default {
                 this.gallery = [],
 
                     idArray.forEach(id => {
-                        
-                        
-                        
+
+
+
                         const request = objectStore.get(id);
-                        
-                        
+
+
 
                         request.onsuccess = (event) => {
                             const result = event.target.result;
-                            
+
                             if (result) {
 
-                                
+
                                 this.gallery.push(result.img);
-                                
-                                
+
+
                             }
                             if (this.gallery.length === idArray.length) {
                                 resolve(this.gallery);
@@ -147,7 +171,7 @@ export default {
 
 
                 this.images = await this.getImagesById(this.photos);
-                
+
             } catch (error) {
                 console.error('Errore durante il recupero delle immagini:', error);
             }
@@ -160,7 +184,14 @@ export default {
 .ms_border {
     background-color: white;
 }
+
 .gold {
     color: gold;
+    margin: 0px 2px;
+}
+
+.grey {
+    color: grey;
+    margin: 0px 2px;
 }
 </style>

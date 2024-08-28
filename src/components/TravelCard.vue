@@ -1,7 +1,7 @@
 <template>
     <router-link :to="{name: 'travel', query: {title: title}}">
         <div class="sub-card text-center mb-2">
-            <h3>{{ title }}</h3>
+            <h3 class="m-0">{{ title }}</h3>
             
         </div>
     </router-link>
@@ -11,8 +11,11 @@
     export default {
         props: {
             title: String
-        }
+        },
+
     }
+
+    
 </script>
 
 <style lang="scss" scoped>

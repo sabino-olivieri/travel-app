@@ -11,7 +11,7 @@
 
 body {
     background-color: #F4A261;
-    
+
 }
 
 a {
@@ -21,8 +21,8 @@ a {
 
 button {
     svg {
-    width: 20px;
-    height: 20px;
+        width: 20px;
+        height: 20px;
     }
 }
 
@@ -37,5 +37,15 @@ button {
 
 .form-control {
     border: 0;
+    border-radius: 10px;
+}
 
-border-radius: 10px;}
+.hidden {
+    transform: translate(100%, 0%);
+}
+
+.animation {
+    position: fixed;
+    width: 100%;
+    transition: all 0.5s;
+}

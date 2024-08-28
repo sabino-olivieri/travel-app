@@ -1,5 +1,5 @@
 <template>
-    <main class="p-1">
+    <main class="p-1 animation" :class="animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <NoTravel />
@@ -11,7 +11,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-4 col-lg-3" v-for="travel in store.arrayTravel" :key="travel">
-                        <TravelCard  :title="travel.title"  />
+                        <TravelCard :title="travel.title" />
                     </div>
                 </div>
             </div>
@@ -29,13 +29,31 @@ export default {
 
     data() {
         return {
-            store
+            store,
+            animation: true
         }
     },
+    mounted() {
+        setTimeout(() => {
 
-
-
+            this.animation = false;
+        }, 1)
+    },
+    beforeRouteLeave(to, from, next) {
+        this.animation = true;
+        setTimeout(() => {
+            next();
+        },500)
+        
+    }
 }
+
+
+
+
+
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>
