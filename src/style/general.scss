@@ -33,6 +33,13 @@ button {
 .ms_border {
     padding: 30px;
     border-radius: 20px;
+    max-height: calc(100vh - 1.5rem * 2);
+    overflow: auto;
+    background-color: white;
+
+    &::-webkit-scrollbar {
+        display: none; /* Nasconde la barra di scorrimento */
+    }
 }
 
 .form-control {
@@ -52,11 +59,3 @@ button {
     transition: all 0.5s ease;
 }
 
-.ms_border {
-    max-height: calc(100vh - 1.5rem * 2);
-    overflow: auto;
-
-    &::-webkit-scrollbar {
-        display: none; /* Nasconde la barra di scorrimento */
-    }
-}

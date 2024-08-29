@@ -2,7 +2,7 @@
     <div class="px-1 animation" :class=" store.animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
-                <div class="ms_card">
+                <div class="ms_border">
                     <div class="d-flex justify-content-between flex-wrap">
 
                         <div>
