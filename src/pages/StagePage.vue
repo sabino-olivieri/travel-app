@@ -8,7 +8,7 @@
 
                         <div class="d-flex gap-2 align-items-start">
 
-                            <router-link :to="{ name: 'editTravel', params: { id: indexTravel } }">
+                            <router-link :to="{ name: 'editStage', query: {travel: indexTravel, day: indexDay, stage: indexStage}}">
                                 <button class="btn btn-warning d-flex align-items-center"> <svg
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1025 1023">
                                         <path fill="currentColor"
@@ -113,7 +113,7 @@ export default {
         store.arrayTravel[this.indexTravel].days[this.indexDay] &&
         store.arrayTravel[this.indexTravel].days[this.indexDay].stages &&
         store.arrayTravel[this.indexTravel].days[this.indexDay].stages.length > 0) {
-            
+
             this.travelTitle = store.arrayTravel[this.indexTravel].title;
 
             store.arrayTravel[this.indexTravel].days[this.indexDay].stages.forEach((stage, index) => {

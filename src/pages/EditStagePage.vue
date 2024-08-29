@@ -1,22 +1,11 @@
 <template>
-    <div class="ms_sidebar px-1" :class="store.sidebarHidden ? 'ms_hidden' : ''">
+    <div class="ms_sidebar px-1 animation" :class="store.animation ? 'hidden' : ''" >
         <div class="container py-4 h-100">
             <div class="row h-100">
                 <main class="ms_border p-3">
 
                     <div class="d-flex justify-content-between">
-                        <h3 class="mb-5">Aggiungi una nuova tappa:</h3>
-
-                        <div>
-                            <button class="btn btn-danger d-flex align-items-center"
-                                @click="store.sidebarHidden = !store.sidebarHidden">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill="currentColor" fill-rule="evenodd"
-                                        d="M4.293 4.293a1 1 0 0 1 1.414 0L10 8.586l4.293-4.293a1 1 0 1 1 1.414 1.414L11.414 10l4.293 4.293a1 1 0 0 1-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 0 1-1.414-1.414L8.586 10L4.293 5.707a1 1 0 0 1 0-1.414Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                        </div>
+                        <h3 class="mb-5">Modifica tappa:</h3>
 
                     </div>
 
@@ -32,35 +21,35 @@
                         <div class="mb-3">
                             <label class="form-label d-block">Valutazione</label>
                             <div class="rating">
-                                <input type="radio" id="star5" name="rating" value="5">
+                                <input type="radio" id="star5" name="rating" value="5" :checked="newStage.rating === 5">
                                 <label for="star5" title="5 stelle"><svg xmlns="http://www.w3.org/2000/svg" width="20"
                                         height="20" viewBox="0 0 26 26">
                                         <path fill="currentColor"
                                             d="M25.326 10.137a1.001 1.001 0 0 0-.807-.68l-7.34-1.066l-3.283-6.651c-.337-.683-1.456-.683-1.793 0L8.82 8.391L1.48 9.457a1 1 0 0 0-.554 1.705l5.312 5.178l-1.254 7.31a1.001 1.001 0 0 0 1.451 1.054L13 21.252l6.564 3.451a1 1 0 0 0 1.451-1.054l-1.254-7.31l5.312-5.178a.998.998 0 0 0 .253-1.024z" />
                                     </svg></label>
 
-                                <input type="radio" id="star4" name="rating" value="4">
+                                <input type="radio" id="star4" name="rating" value="4" :checked="newStage.rating === 4">
                                 <label for="star4" title="4 stelle"><svg xmlns="http://www.w3.org/2000/svg" width="20"
                                         height="20" viewBox="0 0 26 26">
                                         <path fill="currentColor"
                                             d="M25.326 10.137a1.001 1.001 0 0 0-.807-.68l-7.34-1.066l-3.283-6.651c-.337-.683-1.456-.683-1.793 0L8.82 8.391L1.48 9.457a1 1 0 0 0-.554 1.705l5.312 5.178l-1.254 7.31a1.001 1.001 0 0 0 1.451 1.054L13 21.252l6.564 3.451a1 1 0 0 0 1.451-1.054l-1.254-7.31l5.312-5.178a.998.998 0 0 0 .253-1.024z" />
                                     </svg></label>
 
-                                <input type="radio" id="star3" name="rating" value="3">
+                                <input type="radio" id="star3" name="rating" value="3" :checked="newStage.rating === 3">
                                 <label for="star3" title="3 stelle"><svg xmlns="http://www.w3.org/2000/svg" width="20"
                                         height="20" viewBox="0 0 26 26">
                                         <path fill="currentColor"
                                             d="M25.326 10.137a1.001 1.001 0 0 0-.807-.68l-7.34-1.066l-3.283-6.651c-.337-.683-1.456-.683-1.793 0L8.82 8.391L1.48 9.457a1 1 0 0 0-.554 1.705l5.312 5.178l-1.254 7.31a1.001 1.001 0 0 0 1.451 1.054L13 21.252l6.564 3.451a1 1 0 0 0 1.451-1.054l-1.254-7.31l5.312-5.178a.998.998 0 0 0 .253-1.024z" />
                                     </svg></label>
 
-                                <input type="radio" id="star2" name="rating" value="2">
+                                <input type="radio" id="star2" name="rating" value="2" :checked="newStage.rating === 2">
                                 <label for="star2" title="2 stelle"><svg xmlns="http://www.w3.org/2000/svg" width="20"
                                         height="20" viewBox="0 0 26 26">
                                         <path fill="currentColor"
                                             d="M25.326 10.137a1.001 1.001 0 0 0-.807-.68l-7.34-1.066l-3.283-6.651c-.337-.683-1.456-.683-1.793 0L8.82 8.391L1.48 9.457a1 1 0 0 0-.554 1.705l5.312 5.178l-1.254 7.31a1.001 1.001 0 0 0 1.451 1.054L13 21.252l6.564 3.451a1 1 0 0 0 1.451-1.054l-1.254-7.31l5.312-5.178a.998.998 0 0 0 .253-1.024z" />
                                     </svg></label>
 
-                                <input type="radio" id="star1" name="rating" value="1">
+                                <input type="radio" id="star1" name="rating" value="1" :checked="newStage.rating === 1">
                                 <label for="star1" title="1 stella"><svg xmlns="http://www.w3.org/2000/svg" width="20"
                                         height="20" viewBox="0 0 26 26">
                                         <path fill="currentColor"
@@ -109,12 +98,14 @@ import { store } from '../store';
 export default {
     data() {
         return {
+            indexTravel: null,
+            indexDay: null,
+            indexStage: null,
             stage: '',
-            startDate: '',
-            finishDate: '',
             store,
             photos: [],
             photosID: [],
+            oldPhotosId: [],
             newStage: {
                 title: '',
                 description: '',
@@ -125,10 +116,47 @@ export default {
 
     },
 
-    props: {
-        indexTravel: Number,
-        indexDay: Number,
+    created() {
+        this.indexTravel = this.$route.query.travel;
+        this.indexDay = this.$route.query.day;
+        this.indexStage = this.$route.query.stage;
+        
+
+        if(store.arrayTravel[this.indexTravel] &&
+        store.arrayTravel[this.indexTravel].days[this.indexDay] &&
+        store.arrayTravel[this.indexTravel].days[this.indexDay].stages[this.indexStage]
+        ) {
+            this.newStage = store.arrayTravel[this.indexTravel].days[this.indexDay].stages[this.indexStage];
+            if(this.newStage.gallery.length > 0) {
+                this.oldPhotosId = this.newStage.gallery;
+                this.getImagesById(this.newStage.gallery);
+            }
+            
+        } else {
+            this.$router.push({name: 'errorPage'})
+        }
+        
+        
     },
+
+    beforeRouteLeave(to, from, next) {
+        store.animation = true;
+        setTimeout(() => {
+            next();
+        }, 500)
+
+    },
+
+    mounted() {
+        store.animation = true;
+        setTimeout(() => {
+            store.animation = false;
+            this.updateInputFile();
+        }, 300);
+        
+
+    },
+
 
     methods: {
         isExsist() {
@@ -145,11 +173,10 @@ export default {
 
                     if (day.stages) {
 
-                        day.stages.forEach(stage => {
+                        day.stages.forEach((stage, index) => {
 
-                            if (stage.title === stageUpper) {
+                            if (stage.title === stageUpper && index != this.indexStage ) {
                                 exsist = true;
-
                             }
                         });
                     }
@@ -193,6 +220,11 @@ export default {
                 const starElem = document.querySelector('.rating>input:checked');
                 this.newStage.rating = starElem ? parseInt(starElem.value) : 0;
                 starElem ? starElem.checked = false : '';
+
+                this.oldPhotosId.forEach(id => {
+                    this.deleteImagesByID(id);
+                });
+                
                 this.processImagesAndStage();
 
                 console.log(store.arrayTravel);
@@ -202,6 +234,7 @@ export default {
 
                 store.sidebarHidden = true;
                 this.resetInputFile();
+                
 
             }
 
@@ -306,6 +339,7 @@ export default {
             });
         },
 
+
         saveImage(img) {
             return new Promise((resolve, reject) => {
                 if (!this.db) {
@@ -349,11 +383,15 @@ export default {
 
                 // Dopo che tutte le immagini sono state salvate, esegui il codice successivo
                 this.newStage.gallery = this.photosID;
-                store.arrayTravel[this.indexTravel].days[this.indexDay].stages.push(this.newStage);
+                store.arrayTravel[this.indexTravel].days[this.indexDay].stages[this.indexStage]= this.newStage;
                 console.log('Tutte le immagini sono state salvate e la nuova tappa è stata aggiunta.');
 
                 const travelJSON = JSON.stringify(store.arrayTravel);
                 localStorage.setItem('travel', travelJSON);
+
+                // console.log('title', this.newStage.title, 'travel', this.indexTravel, 'day', this.indexDay);
+                
+                this.$router.push({name: 'stagePage', query: {title: this.newStage.title, travel: this.indexTravel, day: parseInt(this.indexDay) + 1}})
 
                 this.newStage = {
                     title: '',
@@ -374,8 +412,70 @@ export default {
             const inputElem = document.getElementById('photos');
 
             inputElem.value = '';
-        }
-    }
+        },
+        getImagesById(idArray) {
+                return new Promise((resolve, reject) => {
+                    if (!this.db) {
+                        this.openOrCreateDatabase().then(() => {
+                            this.getImagesById(idArray).then(resolve).catch(reject);
+                        }).catch(reject);
+                        return;
+                    }
+    
+                    const transaction = this.db.transaction(['images'], 'readonly');
+                    const objectStore = transaction.objectStore('images');
+                    this.photos = [],
+    
+                        idArray.forEach(id => {
+                            const request = objectStore.get(id);
+    
+                            request.onsuccess = (event) => {
+                                const result = event.target.result;
+    
+                                if (result) {
+                                    this.photos.push(result.img)
+                                }
+                                if (this.photos.length === idArray.length) {
+                                    resolve(this.photos);
+                                }
+                            };
+    
+                            request.onerror = (event) => {
+                                console.error('Errore nel recupero dell\'immagine:', event.target.error);
+                                reject(event.target.error);
+                            };
+                        });
+                });
+            },
+
+            deleteImagesByID(id) {
+            return new Promise((resolve, reject) => {
+                if (!this.db) {
+                    this.openOrCreateDatabase()
+                        .then(() => this.deleteImagesByID(id))
+                        .then(resolve)
+                        .catch(reject);
+                    return;
+                }
+
+                const transaction = this.db.transaction(['images'], 'readwrite');
+                const objectStore = transaction.objectStore('images');
+
+                const request = objectStore.delete(id);  // Elimina direttamente l'elemento con l'ID
+
+                request.onsuccess = () => {
+                    console.log('Immagine con ID', id, 'è stata eliminata.');
+                    resolve();
+                };
+
+                request.onerror = (event) => {
+                    console.error('Errore durante l\'eliminazione dell\'immagine:', event.target.error);
+                    reject(event.target.error);
+                };
+            });
+        },
+    },
+
 }
 </script>
 
