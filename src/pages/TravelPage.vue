@@ -77,6 +77,12 @@ export default {
                 this.indexTravel = index
             }
         });
+        
+
+        if(this.travel.length === 0) {
+
+            this.$router.push({name: 'errorPage'})
+        }
     },
 
     mounted() {

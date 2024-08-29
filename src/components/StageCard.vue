@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'stagePage', query: {title: title, travel: indexTravel, day: indexDay}}">
+    <router-link :to="{name: 'stagePage', query: {title: title, travel: indexTravel, day: indexDay + 1}}">
         <div class="ms_card p-2 text-black text-center mb-2">
             <h5 class="m-0"> {{ title }} </h5>
         </div>

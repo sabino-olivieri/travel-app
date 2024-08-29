@@ -5,6 +5,7 @@ import TravelPage from "./pages/TravelPage.vue";
 import DayPage from "./pages/DayPage.vue";
 import StagePage from "./pages/StagePage.vue";
 import EditTravelPage from "./pages/EditTravelPage.vue";
+import ErrorPage from "./pages/ErrorPage.vue";
 
 export const router = createRouter({
     history: createWebHistory(),
@@ -38,6 +39,11 @@ export const router = createRouter({
             path: "/edit/:id",    
             name: "editTravel",    
             component: EditTravelPage
+        },
+        {
+            path: "/:pathMatch(.*)*", 
+            name: "errorPage",    
+            component: ErrorPage
         }
 
     ]

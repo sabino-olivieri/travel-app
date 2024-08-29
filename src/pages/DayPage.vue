@@ -1,5 +1,5 @@
 <template>
-    <div class="px-1 animation" :class=" store.animation ? 'hidden' : ''">
+    <div class="px-1 animation" :class="store.animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <div class="ms_border">
@@ -7,7 +7,7 @@
 
                         <div>
                             <h3>{{ travel.title }}</h3>
-                            <h6 class="mb-3">{{ travel.days[indexDay].day }}</h6>
+                            <h6 class="mb-3">{{ travel.days && travel.days[indexDay] ? travel.days[indexDay].day : '' }}</h6>
 
                         </div>
                         <div class="d-flex gap-2 align-items-center mb-2 flex-wrap">
@@ -49,7 +49,7 @@
                     <div class="sub-card p-3" v-else>
 
                         <h5 class="">Nessuna tappa da visitare</h5>
-                        
+
 
                     </div>
 
@@ -76,8 +76,8 @@ export default {
         return {
             store,
             travel: [],
-            indexTravel: 0,
-            indexDay: 0,
+            indexTravel: null,
+            indexDay: null,
         }
     },
 
@@ -91,15 +91,21 @@ export default {
                 this.indexTravel = index;
             }
         });
-        
+
+
+        if (!store.arrayTravel[this.indexTravel] || !store.arrayTravel[this.indexTravel].days[this.indexDay]) {
+
+            this.$router.push({ name: 'errorPage' })
+        }
+
     },
 
     mounted() {
         store.animation = true;
         setTimeout(() => {
-            
+
             store.animation = false;
-            
+
         }, 1)
     },
 
@@ -107,13 +113,15 @@ export default {
         store.animation = true;
         setTimeout(() => {
             next();
-        },500)
-        
+        }, 500)
+
     },
 
     methods: {
         stageExsist() {
-            if (store.arrayTravel[this.indexTravel].days[this.indexDay].stages &&
+            if (store.arrayTravel[this.indexTravel] &&
+                store.arrayTravel[this.indexTravel].days[this.indexDay] &&
+                store.arrayTravel[this.indexTravel].days[this.indexDay].stages &&
                 store.arrayTravel[this.indexTravel].days[this.indexDay].stages.length > 0) {
                 return true;
             }
@@ -197,5 +205,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

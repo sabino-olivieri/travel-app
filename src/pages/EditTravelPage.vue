@@ -60,9 +60,14 @@ export default {
     },
     created() {
         this.indexTravel = this.$route.params.id;
-        this.title = store.arrayTravel[this.indexTravel].title;
-        this.startDate = store.arrayTravel[this.indexTravel].startDate;
-        this.finishDate = store.arrayTravel[this.indexTravel].finishDate;
+        if(store.arrayTravel[this.indexTravel]) {
+
+            this.title = store.arrayTravel[this.indexTravel].title;
+            this.startDate = store.arrayTravel[this.indexTravel].startDate;
+            this.finishDate = store.arrayTravel[this.indexTravel].finishDate;
+        } else {
+            this.$router.push({name: 'errorPage'});
+        }
     },
     mounted() {
         store.animation = true;
