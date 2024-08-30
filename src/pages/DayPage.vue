@@ -1,5 +1,5 @@
 <template>
-    <div class="px-1 animation" :class="store.animation ? 'hidden' : ''">
+    <div class="px-1 animation mt-5" :class="store.animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <div class="ms_border">
@@ -7,7 +7,8 @@
 
                         <div>
                             <h3>{{ travel.title }}</h3>
-                            <h6 class="mb-3">{{ travel.days && travel.days[indexDay] ? travel.days[indexDay].day : '' }}</h6>
+                            <h6 class="mb-3">{{ travel.days && travel.days[indexDay] ? travel.days[indexDay].day : '' }}
+                            </h6>
 
                         </div>
                         <div class="d-flex gap-2 align-items-center mb-2 flex-wrap">
@@ -81,43 +82,72 @@ export default {
         }
     },
 
-    created() {
-        const title = this.$route.query.title;
-        this.indexDay = this.$route.query.day - 1;
 
-        store.arrayTravel.forEach((element, index) => {
-            if (element.title === title) {
-                this.travel = element;
-                this.indexTravel = index;
+    watch: {
+        '$route.query.day'(newDay, oldDay) {
+            if (newDay !== oldDay) {
+                this.endAnimation();
+
+                setTimeout(() => {
+                    this.checkRoute();
+                    this.startAnimation();
+                }, 500);
+
             }
-        });
-
-
-        if (!store.arrayTravel[this.indexTravel] || !store.arrayTravel[this.indexTravel].days[this.indexDay]) {
-
-            this.$router.push({ name: 'errorPage' })
         }
+    },
 
+    created() {
+        this.checkRoute();
     },
 
     mounted() {
-        store.animation = true;
-        setTimeout(() => {
-
-            store.animation = false;
-
-        }, 1)
+        this.startAnimation();
     },
 
     beforeRouteLeave(to, from, next) {
-        store.animation = true;
+        this.endAnimation();
         setTimeout(() => {
+            store.animation = false;
             next();
-        }, 500)
-
+        },500);
     },
 
     methods: {
+        checkRoute() {
+            const title = this.$route.query.title;
+            this.indexDay = this.$route.query.day - 1;
+
+            store.arrayTravel.forEach((element, index) => {
+                if (element.title === title) {
+                    this.travel = element;
+                    this.indexTravel = index;
+                }
+            });
+
+
+            if (!store.arrayTravel[this.indexTravel] || !store.arrayTravel[this.indexTravel].days[this.indexDay]) {
+
+                this.$router.push({ name: 'errorPage' })
+            }
+        },
+
+        startAnimation() {
+            store.animation = true;
+            setTimeout(() => {
+
+                store.animation = false;
+
+            }, 1);
+        },
+
+        endAnimation() {
+            store.animation = true;
+            setTimeout(() => {
+                store.animation = false;
+            }, 500);
+        },
+
         stageExsist() {
             if (store.arrayTravel[this.indexTravel] &&
                 store.arrayTravel[this.indexTravel].days[this.indexDay] &&

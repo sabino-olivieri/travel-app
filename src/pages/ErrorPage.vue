@@ -1,5 +1,5 @@
 <template>
-    <div class="px-1 animation" :class="store.animation ? 'hidden' : ''">
+    <div class="px-1 animation mt-5" :class="store.animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <div class="ms_border text-center">

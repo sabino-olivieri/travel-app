@@ -1,11 +1,11 @@
 <template>
-    <div class="ms_sidebar px-1 animation" :class="store.animation ? 'hidden' : ''" >
+    <div class="ms_sidebar px-1 animation mt-5" :class="store.animation ? 'hidden' : ''" >
         <div class="container py-4 h-100">
             <div class="row h-100">
                 <main class="ms_border p-3">
 
                     <div class="d-flex justify-content-between">
-                        <h3 class="mb-5">Modifica tappa:</h3>
+                        <h3 class="mb-3">Modifica tappa:</h3>
 
                     </div>
 
@@ -142,6 +142,7 @@ export default {
     beforeRouteLeave(to, from, next) {
         store.animation = true;
         setTimeout(() => {
+            store.animation = false;
             next();
         }, 500)
 

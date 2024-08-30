@@ -1,5 +1,5 @@
 <template>
-    <main class="px-1 animation" :class="store.animation ? 'hidden' : ''">
+    <main class="px-1 animation mt-5 wrapper" :class="store.animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <NoTravel />
@@ -44,6 +44,7 @@ export default {
     beforeRouteLeave(to, from, next) {
         store.animation = true;
         setTimeout(() => {
+            store.animation = false;
             next();
         },500)
         
@@ -57,5 +58,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.wrapper {
+    height: 100vh;
+    overflow: auto;
 
+    &::-webkit-scrollbar {
+        display: none; /* Nasconde la barra di scorrimento */
+    }
+}
 </style>

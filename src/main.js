@@ -3,6 +3,7 @@ import { router } from "./router";
 import './style/general.scss';
 import App from './App.vue';
 import axios from "axios";
+import { Button } from 'bootstrap';
 
 import { registerSW } from 'virtual:pwa-register';
 

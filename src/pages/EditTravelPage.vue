@@ -1,10 +1,10 @@
 <template>
-    <div class="px-1 animation" :class="store.animation ? 'hidden' : ''">
+    <div class="px-1 animation mt-5" :class="store.animation ? 'hidden' : ''">
         <div class="container py-4">
             <div class="row">
                 <main class="ms_border p-3">
 
-                    <h3 class="mb-5">Modifica viaggio:</h3>
+                    <h3 class="mb-3">Modifica viaggio:</h3>
 
 
                     <div class="sub-card p-3">
@@ -54,6 +54,7 @@ export default {
     beforeRouteLeave(to, from, next) {
         store.animation = true;
         setTimeout(() => {
+            store.animation = false;
             next();
         }, 500)
 
