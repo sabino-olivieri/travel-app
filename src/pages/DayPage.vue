@@ -6,12 +6,54 @@
                     <div class="d-flex justify-content-between flex-wrap">
 
                         <div>
-                            <h3>{{ travel.title }}</h3>
-                            <h6 class="mb-3">{{ travel.days && travel.days[indexDay] ? travel.days[indexDay].day : '' }}
-                            </h6>
+                            <div >
+
+                                <a class="d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <h3 >{{ travel.title }}</h3>
+    
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 16 16">
+                                        <path fill="currentColor" fill-rule="evenodd"
+                                            d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                                <ul class="dropdown-menu border-light" >
+                                    <li v-for="travel in store.arrayTravel" :key="travel" >
+                                        
+                                        <router-link class="dropdown-item" :to="{name: 'travel', query: {title: travel.title}}">
+                                            <span >{{ travel.title }}</span>
+                                        </router-link>
+    
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+
+                                <a class="d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+                                <h6 class="m-0 d-inline-block">{{ travel.days && travel.days[indexDay] ? travel.days[indexDay].day : '' }}</h6>
+                                    
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 16 16">
+                                        <path fill="currentColor" fill-rule="evenodd"
+                                            d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                                <ul class="dropdown-menu border-light" >
+                                    <li v-for="day, index in travel.days" :key="day" >
+                                        
+                                        <router-link class="dropdown-item" :to="{name: 'travelDay', query: {title: travel.title , day: index+1}}">
+                                            <span >{{ day.day }}</span>
+                                        </router-link>
+    
+                                    </li>
+                                </ul>
+                            </div>
+                            
 
                         </div>
-                        <div class="d-flex gap-2 align-items-center mb-2 flex-wrap">
+                        <div class="d-flex gap-2 align-items-start mb-2 flex-wrap">
                             <button class="btn btn-success d-felx align-items-center"
                                 @click="store.sidebarHidden = !store.sidebarHidden">Nuova
                                 tappa <svg class="ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
@@ -49,7 +91,7 @@
 
                     <div class="sub-card p-3" v-else>
 
-                        <h5 class="">Nessuna tappa da visitare</h5>
+                        <h5 class="m-0">Nessuna tappa da visitare</h5>
 
 
                     </div>
@@ -235,4 +277,21 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.dropdown-menu {
+    background-color: #264653;
+    border: 0px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.327),
+    -5px -5px 5px rgba(0, 0, 0, 0.327);
+    border-radius: 10px;
+    * {
+        color: white;
+    }
+
+    .dropdown-item:hover {
+        background-color: #F4A261;
+    }
+
+}
+</style>

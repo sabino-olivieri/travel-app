@@ -13,11 +13,11 @@
                 </svg>
             </button>
 
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebarmenu">
+            <div class="offcanvas offcanvas-end p-4 m-sm-3" tabindex="-1" id="sidebarmenu">
                 <div class="offcanvas-header">
                     <router-link class="text-white" :to="{ name: 'home' }">
-                <h3 class="m-0 d-inline-block align-middle" data-bs-toggle="offcanvas"> Home </h3>
-            </router-link>
+                        <h3 class="m-0 d-inline-block align-middle" data-bs-toggle="offcanvas"> Home </h3>
+                    </router-link>
                     <button type="button" class="btn ms-auto text-white p-0" data-bs-dismiss="offcanvas"
                         aria-label="Close">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
@@ -30,9 +30,10 @@
 
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item dropdown fs-4" v-for="travel in store.arrayTravel" :key="travel">
-                            <router-link class="me-2" :to="{ name: 'travel', query: { title: travel.title } }">
-                                <span data-bs-dismiss="offcanvas">{{ travel.title }} </span>
+                        <li class="nav-item mb-2 text-center dropdown fs-4" v-for="travel in store.arrayTravel"
+                            :key="travel">
+                            <router-link :to="{ name: 'travel', query: { title: travel.title } }">
+                                <span class=" fw-semibold" data-bs-dismiss="offcanvas">{{ travel.title }} </span>
                             </router-link>
 
                             <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -42,11 +43,12 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </a>
-                            <ul class="dropdown-menu bg-transparent border-light" >
+                            <ul class="dropdown-menu border-light">
                                 <li v-for="day, index in travel.days" :key="day" data-bs-dismiss="offcanvas">
-                                    
-                                    <router-link class="dropdown-item" :to="{name: 'travelDay', query: {title: travel.title , day: index+1}}">
-                                        <span >{{ day.day }}</span>
+
+                                    <router-link class="dropdown-item"
+                                        :to="{ name: 'travelDay', query: { title: travel.title, day: index + 1 } }">
+                                        <span>{{ day.day }}</span>
                                     </router-link>
 
                                 </li>
@@ -83,6 +85,44 @@ export default {
 
     .offcanvas {
         background-color: #264653;
+        border-radius: 20px 20px 20px 20px;
+
+
+        .nav-item {
+            background-color: white;
+            color: black;
+            border-radius: 10px;
+
+        }
+
+        &::-webkit-scrollbar {
+        width: 15px;
+
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #F4A261;
+        border: 4px solid white;
+        border-radius: 10px;
+        
+    }
+    }
+
+    .dropdown-menu {
+        display: block;
+        height: 0px;
+        overflow: hidden;
+        --bs-dropdown-padding-y: 0rem; //0.5rem
+        --bs-dropdown-border-width: 0px; // var(--bs-border-width);
+        transition: all 0.5s;
+        background-color: #264653;
+        // border: 5px solid white;
+        border-radius: 10px;
+
+        .show {
+            height: 200px;
+            --bs-dropdown-padding-y: 0.5rem; //0.5rem
+            --bs-dropdown-border-width: var(--bs-border-width); // var(--bs-border-width);
+        }
 
         * {
             color: white;
@@ -93,5 +133,31 @@ export default {
         background-color: #F4A261;
     }
 
+}
+
+.dropdown-menu.show {
+    height: 150px;
+    overflow-y: scroll;
+    --bs-dropdown-padding-y: 0.5rem; //0.5rem
+    --bs-dropdown-border-width: var(--bs-border-width); // var(--bs-border-width);
+    border: 5px solid white;
+
+    &::-webkit-scrollbar {
+        width: 15px;
+
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #F4A261;
+        border: 4px solid white;
+        border-radius: 10px;
+        
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .navbar .offcanvas {
+        border-radius: 0px;
+
+    }
 }
 </style>

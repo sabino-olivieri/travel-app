@@ -6,7 +6,24 @@
                     <div class="d-flex flex-wrap justify-content-between mb-2">
                         <div>
 
-                            <h3>{{ travel.title }}</h3>
+                            <a class="d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <h3 >{{ travel.title }}</h3>
+    
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 16 16">
+                                        <path fill="currentColor" fill-rule="evenodd"
+                                            d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                                <ul class="dropdown-menu border-light" >
+                                    <li v-for="travel in store.arrayTravel" :key="travel" >
+                                        
+                                        <router-link class="dropdown-item" :to="{name: 'travel', query: {title: travel.title}}">
+                                            <span >{{ travel.title }}</span>
+                                        </router-link>
+    
+                                    </li>
+                                </ul>
                             <h6 class="mb-3">dal {{ getFormattedDate(travel.startDate) }} al {{
                                 getFormattedDate(travel.finishDate) }}</h6>
                         </div>
@@ -210,4 +227,21 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.dropdown-menu {
+    background-color: #264653;
+    border: 0px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.327),
+    -5px -5px 5px rgba(0, 0, 0, 0.327);
+    border-radius: 10px;
+    * {
+        color: white;
+    }
+
+    .dropdown-item:hover {
+        background-color: #F4A261;
+    }
+
+}
+</style>

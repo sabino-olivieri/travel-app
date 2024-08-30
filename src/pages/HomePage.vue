@@ -63,7 +63,11 @@ export default {
     overflow: auto;
 
     &::-webkit-scrollbar {
-        display: none; /* Nasconde la barra di scorrimento */
+        width: 5px;
+
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #F4A261;
     }
 }
 </style>
