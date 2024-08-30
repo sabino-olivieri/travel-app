@@ -4,8 +4,8 @@
             <div class="row h-100">
                 <main class="ms_border p-3">
 
-                    <div class="d-flex justify-content-between">
-                        <h3 class="mb-3">Aggiungi una nuova tappa:</h3>
+                    <div class="d-flex justify-content-between mb-3">
+                        <h3>Aggiungi una nuova tappa:</h3>
 
                         <div>
                             <button class="btn btn-danger d-flex align-items-center"

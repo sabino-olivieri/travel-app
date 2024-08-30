@@ -7,7 +7,7 @@
                         <div>
 
                             <a class="d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <h3 >{{ travel.title }}</h3>
+                                <h3 class="m-0" >{{ travel.title }}</h3>
     
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 16 16">
                                         <path fill="currentColor" fill-rule="evenodd"

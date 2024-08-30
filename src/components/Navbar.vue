@@ -13,7 +13,7 @@
                 </svg>
             </button>
 
-            <div class="offcanvas offcanvas-end p-4 m-sm-3" tabindex="-1" id="sidebarmenu">
+            <div class="offcanvas offcanvas-end p-1 p-md-4 m-sm-3" tabindex="-1" id="sidebarmenu">
                 <div class="offcanvas-header">
                     <router-link class="text-white" :to="{ name: 'home' }">
                         <h3 class="m-0 d-inline-block align-middle" data-bs-toggle="offcanvas"> Home </h3>
@@ -30,29 +30,30 @@
 
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item mb-2 text-center dropdown fs-4" v-for="travel in store.arrayTravel"
+                        <li class="nav-item mb-2  dropdown p-2 fs-4" v-for="travel in store.arrayTravel"
                             :key="travel">
                             <router-link :to="{ name: 'travel', query: { title: travel.title } }">
-                                <span class=" fw-semibold" data-bs-dismiss="offcanvas">{{ travel.title }} </span>
+                                <span class="fw-semibold canvas-title" data-bs-dismiss="offcanvas">{{ travel.title }} </span>
                             </router-link>
 
-                            <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 16 16">
-                                    <path fill="currentColor" fill-rule="evenodd"
-                                        d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                            <ul class="dropdown-menu border-light">
-                                <li v-for="day, index in travel.days" :key="day" data-bs-dismiss="offcanvas">
 
-                                    <router-link class="dropdown-item"
-                                        :to="{ name: 'travelDay', query: { title: travel.title, day: index + 1 } }">
-                                        <span>{{ day.day }}</span>
-                                    </router-link>
-
-                                </li>
-                            </ul>
+                            <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="chevron text-center" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 16 16">
+                                        <path fill="currentColor" fill-rule="evenodd"
+                                            d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                                <ul class="dropdown-menu border-light">
+                                    <li v-for="day, index in travel.days" :key="day" data-bs-dismiss="offcanvas">
+    
+                                        <router-link class="dropdown-item"
+                                            :to="{ name: 'travelDay', query: { title: travel.title, day: index + 1 } }">
+                                            <span>{{ day.day }}</span>
+                                        </router-link>
+    
+                                    </li>
+                                </ul>
                         </li>
                     </ul>
                 </div>
@@ -92,8 +93,24 @@ export default {
             background-color: white;
             color: black;
             border-radius: 10px;
+            position:relative;
 
+            .canvas-title {
+                display: inline-block;
+                width: 85%;
+            }
+            .chevron {
+                position: absolute;
+                display: inline-block;
+                width: 15%;
+                
+                border-radius: 5px;
+                right: 0px;
+                z-index: var(--bs-offcanvas-zindex);
+    
+            }
         }
+
 
         &::-webkit-scrollbar {
         width: 15px;
@@ -144,7 +161,7 @@ export default {
 
     &::-webkit-scrollbar {
         width: 15px;
-
+        
     }
     &::-webkit-scrollbar-thumb {
         background-color: #F4A261;
