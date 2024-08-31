@@ -30,6 +30,14 @@
 
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+
+                        <li class="nav-item mb-5 p-2 fs-4">
+                            <router-link :to="{ name: 'newTravel' }">
+                                <span class="fw-semibold canvas-title w-100" data-bs-dismiss="offcanvas">Aggiungi Viaggio</span>
+                            </router-link>
+
+                        </li>
+
                         <li class="nav-item mb-2  dropdown p-2 fs-4" v-for="travel in store.arrayTravel"
                             :key="travel">
                             <router-link :to="{ name: 'travel', query: { title: travel.title } }">

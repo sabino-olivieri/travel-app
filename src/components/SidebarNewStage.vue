@@ -90,7 +90,7 @@
                         </div>
 
 
-                        <button class="btn btn-outline-light" @click="saveData()">Salva</button>
+                        <button class="btn btn-outline-light" @click="saveData()" >Salva</button>
                     </div>
                 </main>
             </div>
@@ -120,6 +120,7 @@ export default {
                 description: '',
                 gallery: [],
                 rating: 0,
+                visit: false,
             },
         }
 
@@ -141,7 +142,7 @@ export default {
 
 
                 store.arrayTravel[this.indexTravel].days.forEach(day => {
-                    console.log('giorno', day);
+
 
                     if (day.stages) {
 
@@ -195,14 +196,11 @@ export default {
                 starElem ? starElem.checked = false : '';
                 this.processImagesAndStage();
 
-                console.log(store.arrayTravel);
-
-                const travelJSON = JSON.stringify(store.arrayTravel);
-                localStorage.setItem('travel', travelJSON);
 
                 store.sidebarHidden = true;
                 this.resetInputFile();
-
+                
+                
             }
 
         },
@@ -355,11 +353,14 @@ export default {
                 const travelJSON = JSON.stringify(store.arrayTravel);
                 localStorage.setItem('travel', travelJSON);
 
+                this.$emit('newStage');
+
                 this.newStage = {
                     title: '',
                     description: '',
                     gallery: [],
                     rating: 0,
+                    visit: false
                 }
                 this.photos = [];
                 this.photosID = [];

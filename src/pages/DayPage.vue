@@ -77,11 +77,18 @@
 
                         <div class="container">
                             <div class="row">
-                                <h5 class="mb-3">Tappe da visitare:</h5>
-                                <div class="col-12 col-md-6"
-                                    v-for="stage in store.arrayTravel[this.indexTravel].days[this.indexDay].stages"
+                                <h5 class="mb-3" v-if="stageToVisit.length > 0">Tappe da visitare:</h5>
+                                <div class="col-12 col-md-6 mb-3"
+                                    v-for="stage in stageToVisit"
                                     :key="stage">
-                                    <StageCard :title="stage.title" :indexTravel="indexTravel" :indexDay="indexDay" />
+                                    <StageCard :title="stage.title" :indexTravel="indexTravel" :indexDay="indexDay" :checked="stage.visit" @changeCheck="changeCheck(stage.indexStage)"/>
+                                </div>
+
+                                <h5 class="mb-3" v-if="stageVisited.length > 0">Tappe visitate:</h5>
+                                <div class="col-12 col-md-6"
+                                    v-for="stage in stageVisited"
+                                    :key="stage">
+                                    <StageCard :title="stage.title" :indexTravel="indexTravel" :indexDay="indexDay" :checked="stage.visit" @changeCheck="changeCheck(stage.indexStage)"/>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +109,7 @@
         </div>
     </div>
 
-    <SidebarNewStage :indexTravel="indexTravel" :indexDay="indexDay" />
+    <SidebarNewStage :indexTravel="indexTravel" :indexDay="indexDay" @newStage="checkStage()"/>
     <ModalDay @clickedDelete="deleteAllStage()" />
 </template>
 
@@ -121,6 +128,8 @@ export default {
             travel: [],
             indexTravel: null,
             indexDay: null,
+            stageToVisit: [],
+            stageVisited: [],
         }
     },
 
@@ -141,6 +150,7 @@ export default {
 
     created() {
         this.checkRoute();
+        this.checkStage();
     },
 
     mounted() {
@@ -200,6 +210,29 @@ export default {
             return false;
         },
 
+        checkStage() {
+            this.stageToVisit = [];
+            this.stageVisited = [];
+
+            store.arrayTravel[this.indexTravel].days[this.indexDay].stages.forEach((stage, index) => {
+                if(stage.visit) {
+                    this.stageVisited.push({
+                        title: stage.title,
+                        indexStage: index,
+                        visit: true
+                    })
+                    
+                    
+                } else {
+                    this.stageToVisit.push({
+                        title: stage.title,
+                        indexStage: index,
+                        visit: false
+                    })
+                }
+            });
+        },
+
         deleteAllStage() {
 
             if (store.arrayTravel[this.indexTravel].days[this.indexDay].stages &&
@@ -217,7 +250,6 @@ export default {
                 store.arrayTravel[this.indexTravel].days[this.indexDay].stages = [];
 
             }
-            console.log('delete');
             store.overlayHidden = true;
 
         },
@@ -272,6 +304,17 @@ export default {
                 };
             });
         },
+
+        changeCheck(index) {
+            
+            store.arrayTravel[this.indexTravel].days[this.indexDay].stages[index].visit = !store.arrayTravel[this.indexTravel].days[this.indexDay].stages[index].visit;
+            const travelJSON = JSON.stringify(store.arrayTravel);
+                localStorage.setItem('travel', travelJSON);
+                setTimeout(() => {
+                    
+                    this.checkStage();
+                }, 500);
+        }
 
     }
 }

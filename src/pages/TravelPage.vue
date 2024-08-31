@@ -158,7 +158,7 @@ export default {
             store.arrayTravel.splice(this.indexTravel, 1);
             const travelJSON = JSON.stringify(store.arrayTravel);
             localStorage.setItem('travel', travelJSON);
-            console.log(store.arrayTravel);
+
             this.deleteImagesByTravelID(this.indexTravel);
             store.overlayHidden = true;
             this.$router.push({ name: 'home' });
