@@ -10,10 +10,15 @@ export default defineConfig({
       srcDir: 'src',
       filename: 'service-worker.js',
       registerType: 'autoUpdate',
+      injectManifest: {
+        injectionPoint: undefined
+      },
+      manifest: {
+        // Aggiungi qui le configurazioni del tuo manifest
+        
+      },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,gif}'],
-        clientsClaim: true,
-        skipWaiting: true,
       },
       devOptions: {
         enabled: true,

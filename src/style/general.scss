@@ -53,6 +53,20 @@ button {
     }
 }
 
+@media screen and (max-width: 767px) {
+    .ms_border {
+        padding: 15px;
+    }
+
+    .sub-card {
+        padding: 15px;
+    }
+
+    .ms_card {
+        padding: 15px;
+    }
+}
+
 .form-control {
     border: 0;
     border-radius: 10px;

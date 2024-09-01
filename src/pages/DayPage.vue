@@ -85,7 +85,7 @@
                                 </div>
 
                                 <h5 class="mb-3" v-if="stageVisited.length > 0">Tappe visitate:</h5>
-                                <div class="col-12 col-md-6"
+                                <div class="col-12 col-md-6 mb-3"
                                     v-for="stage in stageVisited"
                                     :key="stage">
                                     <StageCard :title="stage.title" :indexTravel="indexTravel" :indexDay="indexDay" :checked="stage.visit" @changeCheck="changeCheck(stage.indexStage)"/>
@@ -213,24 +213,26 @@ export default {
         checkStage() {
             this.stageToVisit = [];
             this.stageVisited = [];
+            if(store.arrayTravel[this.indexTravel].days[this.indexDay].stages) {
 
-            store.arrayTravel[this.indexTravel].days[this.indexDay].stages.forEach((stage, index) => {
-                if(stage.visit) {
-                    this.stageVisited.push({
-                        title: stage.title,
-                        indexStage: index,
-                        visit: true
-                    })
-                    
-                    
-                } else {
-                    this.stageToVisit.push({
-                        title: stage.title,
-                        indexStage: index,
-                        visit: false
-                    })
-                }
-            });
+                store.arrayTravel[this.indexTravel].days[this.indexDay].stages.forEach((stage, index) => {
+                    if(stage.visit) {
+                        this.stageVisited.push({
+                            title: stage.title,
+                            indexStage: index,
+                            visit: true
+                        })
+                        
+                        
+                    } else {
+                        this.stageToVisit.push({
+                            title: stage.title,
+                            indexStage: index,
+                            visit: false
+                        })
+                    }
+                });
+            }
         },
 
         deleteAllStage() {

@@ -3,6 +3,7 @@ import { registerRoute } from 'workbox-routing';
 import { CacheFirst } from 'workbox-strategies';
 import { ExpirationPlugin } from 'workbox-expiration';
 
+// Usa self.__WB_MANIFEST per precaricare i file
 precacheAndRoute(self.__WB_MANIFEST);
 
 // Caching delle immagini
