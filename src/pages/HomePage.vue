@@ -9,7 +9,7 @@
 
         <div v-if="store.arrayTravel.length > 0">
             <div class="container">
-                <div class="row">
+                <div class="row g-2">
                     <div class="col-12 col-md-4 col-lg-3" v-for="travel in store.arrayTravel" :key="travel">
                         <TravelCard :title="travel.title" />
                     </div>
@@ -59,15 +59,16 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-    height: 100vh;
-    overflow: auto;
+    height: calc(100vh - 3rem - 1rem);
+    overflow-y: auto;
 
     &::-webkit-scrollbar {
         width: 5px;
 
     }
     &::-webkit-scrollbar-thumb {
-        background-color: #F4A261;
+        background-color: #264653;
+        border-radius: 10px;
     }
 }
 </style>

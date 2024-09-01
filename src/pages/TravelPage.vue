@@ -1,6 +1,6 @@
 <template>
     <div class="px-1 animation mt-5" :class="store.animation ? 'hidden' : ''">
-        <div class="container py-4">
+        <div class="container pt-4">
             <div class="row">
                 <div class="ms_border">
                     <div class="d-flex flex-wrap justify-content-between mb-2">

@@ -11,11 +11,10 @@ export default defineConfig({
       filename: 'service-worker.js',
       registerType: 'autoUpdate',
       injectManifest: {
-        injectionPoint: undefined
+        injectionPoint: 'self.__WB_MANIFEST', // Assicurati che questo sia il punto di iniezione corretto
       },
       manifest: {
         // Aggiungi qui le configurazioni del tuo manifest
-        
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,gif}'],

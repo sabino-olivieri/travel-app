@@ -20,7 +20,9 @@ registerRoute(
     })
 );
 
-self.addEventListener('message', (event) => {
+self.addEventListener('install', (event) => {
+    console.log('service-worker');
+    
     if (event.data && event.data.type === 'SKIP_WAITING') {
         self.skipWaiting();
     }
