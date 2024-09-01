@@ -33,7 +33,7 @@ button {
 .ms_border {
     padding: 30px;
     border-radius: 20px;
-    height: calc(100vh - 3rem - 2rem);
+    max-height: calc(100vh - 6rem);
     overflow: auto;
     background-color: white;
 

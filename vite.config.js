@@ -6,22 +6,14 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
-      strategies: 'injectManifest',
-      srcDir: 'src',
-      filename: 'service-worker.js',
-      registerType: 'autoUpdate',
-      injectManifest: {
-        injectionPoint: 'self.__WB_MANIFEST', // Assicurati che questo sia il punto di iniezione corretto
-      },
-      manifest: {
-        // Aggiungi qui le configurazioni del tuo manifest
-      },
+      src: 'src/service-worker.js', // Percorso al tuo service worker personalizzato
+      registerType: 'autoUpdate', // Assicura che gli aggiornamenti siano automatici e non immediati
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,gif}'],
+        clientsClaim: true, // Prende il controllo immediatamente
+        skipWaiting: true, // Salta il processo di attesa
       },
       devOptions: {
-        enabled: true,
-        type: 'module',
+        enabled: true, // Questo dovrebbe essere disattivato in produzione
       },
     }),
   ],
